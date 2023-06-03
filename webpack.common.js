@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 const path = require("path")
 
 module.exports = {
@@ -12,5 +13,11 @@ module.exports = {
   // можно импортировать без расширения
   resolve: {
     extensions: [".js"]
-  }
+  },
+  plugins: [
+    // чтобы не подключать сгенерировнные скрипты в html
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "public/index.html")
+    })
+  ]
 }
