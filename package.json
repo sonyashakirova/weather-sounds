@@ -1,0 +1,15 @@
+{
+  "name": "weather-sounds",
+  "version": "1.0.0",
+  "description": "Задание по модулю Webpack",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webpack",
+    "js"
+  ],
+  "author": "sonyashakirova",
+  "license": "ISC"
+}
