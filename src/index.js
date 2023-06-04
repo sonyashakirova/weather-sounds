@@ -31,6 +31,11 @@ soundObjectList.forEach((soundParams) => {
     background.style.backgroundImage = `url(${soundParams.image})`
 
     if (playingSoundId !== soundParams.id) {
+      if (pausedSoundId || playingSoundId) {
+        const playingSoundVolume = document.getElementById(`volume-${playingSoundId || pausedSoundId}`)
+        playingSoundVolume.classList.add("visually-hidden")
+      }
+
       if (pausedSoundId) {
         const pausedSoundIcon = document.getElementById(`icon-${pausedSoundId}`)
         pausedSoundIcon.src = soundObjectList.find(({ id }) => id === pausedSoundId).icon
@@ -41,6 +46,7 @@ soundObjectList.forEach((soundParams) => {
         playingSoundAudio.pause()
       }
 
+      volumeInput.classList.remove("visually-hidden")
       playingSoundId = soundParams.id
       audio.play()
     } else {
