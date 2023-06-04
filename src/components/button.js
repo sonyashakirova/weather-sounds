@@ -1,4 +1,4 @@
-export const createSoundButton = (soundParams) => {
+export const createSoundButton = (soundParams, icon) => {
   const button = document.createElement("button")
   button.type = "button"
   button.classList.add("sound-button")
@@ -9,6 +9,7 @@ export const createSoundButton = (soundParams) => {
   buttonDescription.classList.add("visually-hidden")
 
   button.appendChild(buttonDescription)
+  button.appendChild(icon)
 
   return button
 }
