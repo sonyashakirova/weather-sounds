@@ -1,7 +1,9 @@
 import {
   createAudio,
   createIcon,
-  createSoundButton
+  createSoundButton,
+  createVolumeBlock,
+  createVolumeInput
 } from "./components"
 import { soundObjectList } from "./data"
 import "./index.scss"
@@ -16,9 +18,12 @@ soundObjectList.forEach((soundParams) => {
   const audio = createAudio(soundParams)
   const icon = createIcon(soundParams)
   const button = createSoundButton(soundParams, icon)
+  const volumeInput = createVolumeInput(soundParams, audio)
+  const volumeBlock = createVolumeBlock(volumeInput)
 
   soundComponent.appendChild(audio)
   soundComponent.appendChild(button)
+  soundComponent.appendChild(volumeBlock)
   listItem.appendChild(soundComponent)
   soundList.appendChild(listItem)
 })
