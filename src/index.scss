@@ -16,6 +16,52 @@ body {
   height: 100vh;
 }
 
+.sound-background {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px);
+  height: 100%;
+}
+
+.sound-section {
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 60px 20px;
+  width: max-content;
+}
+
+.sound-title {
+  max-width: 90vw;
+  text-transform: uppercase;
+  font-size: 40px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 40px;
+  padding: 0 10px;
+  text-shadow:
+    -1px -1px 0 #36454F,
+    1px -1px 0 #36454F,
+    -1px 1px 0 #36454F,
+    1px 1px 0 #36454F;
+}
+
+.sound-list {
+  list-style: none;
+  display: grid;
+  gap: 30px;
+  justify-content: center;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, max-content);
+  }
+}
+
 .visually-hidden {
   position: absolute;
   clip: rect(0 0 0 0);
