@@ -42,6 +42,13 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       },
       {
+        test: /\.(jpg|svg|mp3)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "assets/[hash][ext][query]"
+        }
+      },
+      {
         test: /\.ttf$/i,
         type: "asset/resource",
         generator: {

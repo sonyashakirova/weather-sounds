@@ -1,4 +1,5 @@
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin")
 const TerserPlugin = require("terser-webpack-plugin")
 const { merge } =  require("webpack-merge")
 const commonConfig = require("./webpack.common")
@@ -11,7 +12,19 @@ module.exports = merge(commonConfig, {
       // оптимизирует css
       new CssMinimizerPlugin(),
       // оптимизирует js
-      new TerserPlugin()
+      new TerserPlugin(),
+      // оптимизирует картинки
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminMinify,
+          options: {
+            plugins: [
+              ["jpegtran", { progressive: true }],
+              ["svgo",  { name: "preset-default" }]
+            ]
+          }
+        }
+      })
     ],
     // выносит node_modules в отдельный файл
     splitChunks: {
