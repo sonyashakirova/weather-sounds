@@ -40,6 +40,13 @@ module.exports = {
         test: /\.s?css$/i,
         // обработка файла идет справа налево
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.ttf$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[hash][ext][query]"
+        }
       }
     ]
   }
