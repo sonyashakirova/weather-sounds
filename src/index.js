@@ -25,6 +25,10 @@ soundObjectList.forEach((soundParams) => {
   const volumeInput = createVolumeInput(soundParams, audio)
   const volumeBlock = createVolumeBlock(volumeInput)
 
+  button.addEventListener("click", () => {
+    background.style.backgroundImage = `url(${soundParams.image})`
+  })
+
   soundComponent.appendChild(audio)
   soundComponent.appendChild(button)
   soundComponent.appendChild(volumeBlock)
