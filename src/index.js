@@ -1,3 +1,4 @@
+import PauseIcon from "./assets/icons/pause.svg"
 import {
   createAudio,
   createIcon,
@@ -9,6 +10,7 @@ import { soundObjectList } from "./data"
 import "./index.scss"
 
 let playingSoundId = null
+let pausedSoundId = null
 
 const background = document.getElementById("background")
 background.style.backgroundImage = `url(${soundObjectList[0].image})`
@@ -29,6 +31,11 @@ soundObjectList.forEach((soundParams) => {
     background.style.backgroundImage = `url(${soundParams.image})`
 
     if (playingSoundId !== soundParams.id) {
+      if (pausedSoundId) {
+        const pausedSoundIcon = document.getElementById(`icon-${pausedSoundId}`)
+        pausedSoundIcon.src = soundObjectList.find(({ id }) => id === pausedSoundId).icon
+      }
+
       if (playingSoundId) {
         const playingSoundAudio = document.getElementById(`audio-${playingSoundId}`)
         playingSoundAudio.pause()
@@ -37,6 +44,8 @@ soundObjectList.forEach((soundParams) => {
       playingSoundId = soundParams.id
       audio.play()
     } else {
+      icon.src = PauseIcon
+      pausedSoundId = soundParams.id
       playingSoundId = null
       audio.pause()
     }
