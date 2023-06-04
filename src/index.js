@@ -8,8 +8,12 @@ import {
 import { soundObjectList } from "./data"
 import "./index.scss"
 
-const soundList = document.getElementById("list")
+let playingSoundId = null
 
+const background = document.getElementById("background")
+background.style.backgroundImage = `url(${soundObjectList[0].image})`
+
+const soundList = document.getElementById("list")
 soundObjectList.forEach((soundParams) => {
   const listItem = document.createElement("li")
   const soundComponent = document.createElement("div")
