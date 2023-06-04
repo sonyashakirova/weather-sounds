@@ -27,6 +27,19 @@ soundObjectList.forEach((soundParams) => {
 
   button.addEventListener("click", () => {
     background.style.backgroundImage = `url(${soundParams.image})`
+
+    if (playingSoundId !== soundParams.id) {
+      if (playingSoundId) {
+        const playingSoundAudio = document.getElementById(`audio-${playingSoundId}`)
+        playingSoundAudio.pause()
+      }
+
+      playingSoundId = soundParams.id
+      audio.play()
+    } else {
+      playingSoundId = null
+      audio.pause()
+    }
   })
 
   soundComponent.appendChild(audio)
