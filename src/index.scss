@@ -62,6 +62,39 @@ body {
   }
 }
 
+.sound-block {
+  width: max-content;
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.sound-button {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-color: #ffffff;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+
+  img {
+    border-radius: 10px;
+  }
+
+  &:hover {
+    transition: all 0.1s ease-out;
+    opacity: 0.9;
+  }
+}
+
+.volume-input {
+  width: 150px;
+}
+
 .visually-hidden {
   position: absolute;
   clip: rect(0 0 0 0);
