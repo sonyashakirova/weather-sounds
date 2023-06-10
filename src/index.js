@@ -3,8 +3,7 @@ import {
   createAudio,
   createIcon,
   createSoundButton,
-  createVolumeBlock,
-  createVolumeInput
+  createVolume
 } from "./components"
 import { soundObjectList } from "./data"
 import "./index.scss"
@@ -16,6 +15,11 @@ let pausedSoundId = null
 const background = document.getElementById("background")
 background.style.backgroundImage = `url(${soundObjectList[0].image})`
 
+// добавляем контроль громкости
+const volumeBlock = document.getElementById("volume")
+const [volumeInput, volumeLabel] = createVolume()
+volumeBlock.appendChild(volumeLabel)
+
 const soundList = document.getElementById("list")
 soundObjectList.forEach((soundParams) => {
   // создаем компонент списка
@@ -24,11 +28,9 @@ soundObjectList.forEach((soundParams) => {
   soundComponent.classList.add("sound-block")
 
   // создаем внутренние компоненты
-  const audio = createAudio(soundParams)
+  const audio = createAudio(soundParams, volumeInput)
   const icon = createIcon(soundParams)
   const button = createSoundButton(soundParams, icon)
-  const volumeInput = createVolumeInput(soundParams, audio)
-  const volumeBlock = createVolumeBlock(volumeInput)
 
   // добавляем логику
   button.addEventListener("click", () => {
@@ -36,12 +38,6 @@ soundObjectList.forEach((soundParams) => {
     background.style.backgroundImage = `url(${soundParams.image})`
 
     if (playingSoundId !== soundParams.id) {
-      if (pausedSoundId || playingSoundId) {
-        // скрываем ползунок предыдущего звука
-        const playingSoundVolume = document.getElementById(`volume-${playingSoundId || pausedSoundId}`)
-        playingSoundVolume.classList.add("visually-hidden")
-      }
-
       if (pausedSoundId) {
         // если предыдущий звук был поставлен на паузу, меняем его иконку
         const pausedSoundIcon = document.getElementById(`icon-${pausedSoundId}`)
@@ -54,8 +50,7 @@ soundObjectList.forEach((soundParams) => {
         playingSoundAudio.pause()
       }
 
-      // показываем ползунок и включаем новый звук
-      volumeInput.classList.remove("visually-hidden")
+      // включаем новый звук
       playingSoundId = soundParams.id
       audio.play()
     } else {
@@ -70,7 +65,6 @@ soundObjectList.forEach((soundParams) => {
   // добавляем компоненты в DOM дерево
   soundComponent.appendChild(audio)
   soundComponent.appendChild(button)
-  soundComponent.appendChild(volumeBlock)
   listItem.appendChild(soundComponent)
   soundList.appendChild(listItem)
 })

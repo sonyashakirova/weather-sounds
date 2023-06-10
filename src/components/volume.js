@@ -1,28 +1,19 @@
-export const createVolumeBlock = (input) => {
-  const volumeBlock = document.createElement("label")
+export const createVolume = () => {
+  const label = document.createElement("label")
 
-  const label = document.createElement("span")
-  label.textContent = "Change sound volume"
-  label.classList.add("visually-hidden")
+  const text = document.createElement("span")
+  text.textContent = "Change sound volume"
+  text.classList.add("visually-hidden")
 
-  volumeBlock.appendChild(label)
-  volumeBlock.appendChild(input)
-
-  return volumeBlock
-}
-
-export const createVolumeInput = (soundParams, audio) => {
   const input = document.createElement("input")
   input.type = "range"
   input.min = 0
   input.max = 100
-  input.value = audio.volume * 100
-  input.id = `volume-${soundParams.id}`
-  input.classList.add("volume-input", "visually-hidden")
+  input.value = 50
+  input.classList.add("volume-input")
 
-  input.addEventListener("change", (e) => {
-    audio.volume = e.target.value * 0.01
-  })
+  label.appendChild(text)
+  label.appendChild(input)
 
-  return input
+  return [input, label]
 }

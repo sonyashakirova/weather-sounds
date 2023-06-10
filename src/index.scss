@@ -91,6 +91,12 @@ body {
   }
 }
 
+.volume-block {
+  margin: 10px 0;
+  display: grid;
+  justify-content: center;
+}
+
 .volume-input {
   width: 150px;
 }
