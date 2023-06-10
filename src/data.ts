@@ -7,8 +7,9 @@ import SummerSound from "./assets/sounds/summer.mp3"
 import WinterIcon from "./assets/icons/cloud-snow.svg"
 import WinterImage from "./assets/images/winter-bg.jpg"
 import WinterSound from "./assets/sounds/winter.mp3"
+import { ISoundObject } from "./types"
 
-export const soundObjectList = [
+export const soundObjectList: ISoundObject[] = [
   {
     id: 1,
     code: "summer", 

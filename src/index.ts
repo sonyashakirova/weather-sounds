@@ -8,19 +8,19 @@ import {
 import { soundObjectList } from "./data"
 import "./index.scss"
 
-let playingSoundId = null
-let pausedSoundId = null
+let playingSoundId: number | null = null
+let pausedSoundId: number | null = null
 
 // ставим на фон первую картинку
-const background = document.getElementById("background")
+const background = document.getElementById("background")!
 background.style.backgroundImage = `url(${soundObjectList[0].image})`
 
 // добавляем контроль громкости
-const volumeBlock = document.getElementById("volume")
+const volumeBlock = document.getElementById("volume")!
 const [volumeInput, volumeLabel] = createVolume()
 volumeBlock.appendChild(volumeLabel)
 
-const soundList = document.getElementById("list")
+const soundList = document.getElementById("list")!
 soundObjectList.forEach((soundParams) => {
   // создаем компонент списка
   const listItem = document.createElement("li")
@@ -40,13 +40,13 @@ soundObjectList.forEach((soundParams) => {
     if (playingSoundId !== soundParams.id) {
       if (pausedSoundId) {
         // если предыдущий звук был поставлен на паузу, меняем его иконку
-        const pausedSoundIcon = document.getElementById(`icon-${pausedSoundId}`)
-        pausedSoundIcon.src = soundObjectList.find(({ id }) => id === pausedSoundId).icon
+        const pausedSoundIcon = document.getElementById(`icon-${pausedSoundId}`)! as HTMLImageElement
+        pausedSoundIcon.src = soundObjectList.find(({ id }) => id === pausedSoundId)!.icon
       }
 
       if (playingSoundId) {
         // если предыдущий звук еще играет, ставим на паузу
-        const playingSoundAudio = document.getElementById(`audio-${playingSoundId}`)
+        const playingSoundAudio = document.getElementById(`audio-${playingSoundId}`)! as HTMLAudioElement
         playingSoundAudio.pause()
       }
 

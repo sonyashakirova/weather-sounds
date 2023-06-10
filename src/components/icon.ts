@@ -1,4 +1,6 @@
-export const createIcon = (soundParams) => {
+import { ISoundObject } from "../types"
+
+export const createIcon = (soundParams: ISoundObject): HTMLImageElement => {
   const icon = document.createElement("img")
   icon.id = `icon-${soundParams.id}`
   icon.src = soundParams.icon

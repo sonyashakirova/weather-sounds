@@ -1,4 +1,6 @@
-export const createSoundButton = (soundParams, icon) => {
+import { ISoundObject } from "../types"
+
+export const createSoundButton = (soundParams: ISoundObject, icon: any): HTMLButtonElement => {
   const button = document.createElement("button")
   button.type = "button"
   button.classList.add("sound-button")

@@ -1,4 +1,4 @@
-export const createVolume = () => {
+export const createVolume = (): [HTMLInputElement, HTMLLabelElement] => {
   const label = document.createElement("label")
 
   const text = document.createElement("span")
@@ -7,9 +7,9 @@ export const createVolume = () => {
 
   const input = document.createElement("input")
   input.type = "range"
-  input.min = 0
-  input.max = 100
-  input.value = 50
+  input.min = "0"
+  input.max = "100"
+  input.value = "50"
   input.classList.add("volume-input")
 
   label.appendChild(text)
