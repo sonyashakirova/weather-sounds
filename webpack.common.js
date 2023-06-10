@@ -14,7 +14,7 @@ module.exports = {
   },
   // можно импортировать без расширения
   resolve: {
-    extensions: [".js"]
+    extensions: [".js", ".ts"]
   },
   plugins: [
     // плагин для копирования статических файлов
@@ -54,6 +54,11 @@ module.exports = {
         generator: {
           filename: "fonts/[hash][ext][query]"
         }
+      },
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
       }
     ]
   }
